@@ -1,0 +1,17 @@
+# Seasonal ARIMA 
+#Loading the data
+data=c(97608,90871,86592,79627,72478,94872,94094,86417,111664,126977,144650,139428,102883,91705,84201,82250,80537,81136)
+data
+# test for stationary
+#Null hyp: it is independent 
+#Alt hyp:it is not independent 
+#small p values indicate - the series is stationary 
+Box.test (data, lag = 10,type="Ljung-Box")
+library(tseries)
+require("tseries")
+#ACF & PACF plot
+acf(data)
+pacf(data)
+Model=auto.arima(data)
+Fc=forecast(Model,h=6)
+Fc
